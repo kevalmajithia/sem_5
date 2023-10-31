@@ -1,0 +1,230 @@
+Background color change with Buttons:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change BG Color with button </title>
+</head>
+<script>
+    function changeBGcolor(color){
+        document.body.style.backgroundColor=color;
+    }
+</script>
+<body>
+    <label for="">Change the color to:</label>
+    <input type="radio" name="" id="" onclick="changeBGcolor('red')">Red
+    <input type="radio" name="" id="" onclick="changeBGcolor('blue')">blue
+    <input type="radio" name="" id="" onclick="changeBGcolor('Orange')">Orange
+    <input type="radio" name="" id="" onclick="changeBGcolor('Brown')">Brown
+    <input type="radio" name="" id="" onclick="changeBGcolor('White')">White
+</div>
+</body>
+</html>
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+BG color change 5 seconds 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG color</title>
+</head>
+<body>
+    <h1>BG Color is changed every 5 seconds </h1>
+
+<script>
+    setInterval(
+        function(){
+            var randomColor=Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor="#  "+randomColor;
+        },5000);
+
+</script>
+</body>
+</html>
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+User Form Validation: 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User validation</title>
+</head>
+<script>
+    function valdateForm()
+    {
+        var username= document.getElementById("username").value;
+        var password= document.getElementById("password").value;
+        var email= document.getElementById("email").value;
+        // for checking if the username is blank or not: 
+        if(username=="")
+        {
+            alert('Username cannot be blank');
+            return false;
+        }
+        // checking if the password is blank or not
+        if(password==""){
+            alert('Password cannot be blank');
+            return false;
+        }
+        if(!email.includes("@")){
+            alert("Invalid Email id");
+            return false;
+        }
+        alert("Form has been validated");
+        return true;
+    }
+</script>
+<body>
+    <form onsubmit="return valdateForm()">
+    Username: <input type="text" name="" id="username"><br>
+    Password:<input type="password" name="" id="password"><br>
+    Email: <input type="email" name="" id="email"><br>
+    <input type="submit" value="submit">
+    </form>
+</body>
+</html>
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Async and Callback Fucntions in JS: 
+function simulateAsyncOperation(callback){
+    setTimeout(function (){
+        var result =Math.random();
+        callback(null,result);
+    },2000);
+}
+function handleresult(error,result){
+    if(error){
+        console.log('Error:',error);
+    }
+    else
+    {
+        console.log('Result:',result);
+    }
+}
+console.log('Start of the program');
+simulateAsyncOperation(handleresult);
+console.log('End of the program');
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Digital Clock: 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Clock</title>
+    <style>
+        #clock {
+            font-size: 48px;
+            font-weight: bold;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to display the clock
+        updateClock();
+    </script>
+</body>
+</html>
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Server Code
+
+const http = require('http');
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+    // Log the client request
+    const logMessage = `${new Date().toISOString()} - Request: ${req.method} ${req.url}\n`;
+    fs.appendFile('log.txt', logMessage, (err) => {
+        if (err) {
+            console.error('Error writing to log.txt:', err);
+        }
+    });
+
+    // Respond to the client
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, this request has been logged!\n');
+});
+
+const port = 8080;
+server.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}/`);
+});
+
+// in the terminal run node server.js ( name of the file ) and then log in the link http://localhost:8080/
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Cn exp 1  (dhcp)
+
+1. Take 1 router, 2 switches, 4 laptops,  router at top, followed by 2 switches below them, then 4 laptops (like a tree)
+2. Then go to Connections and take copper wire and connect them with each other
+3. Click on router, then go to cli, it’ll ask (would u like to enter initial configuration ?) select n, Press enter 
+4. Now (Router>  ) would be written, type “en” and press enter.
+5. Then type “conf t”  and press enter.
+6. Type “int fa0/0” and press enter.
+7. Then type “ip address 192.168.0.1  255.255.255.0” and press enter.
+8. Then type “no shutdown” and press enter.
+9. Then type “do write memory” to save the changes made and press enter.
+10. Now type “ip dhcp pool net1” and press enter.
+11. Now type “network 192.168.0.1  255.255.255.0” and press enter.
+12. Now type “exit” and press enter.
+13. Now repeat from step 6 to 11 (just change fa0/0 to fa0/1 && ip dhcp pool net1 to ip dhcp pool net2 && 192.168.0.1  255.255.255.0 to 192.168.1.1  255.255.255.0 )
+14. Now click on laptop, go to desktop , select ip configuration, click on dhcp (it’ll auto generate the ip address)
+15. Done
+
+CN Exp 2 (VLAN) 
+
+1. Take 1 switch of type 2960, and 4 laptops 
+2. then go to indivisual laptops, click on it and go to desktop tab and click on IP Configuration of it and type 10.0.0.1 in the IPv4 Address and similiarly for all the 4 laptops as 10.0.0.2,10.0.0.3,10.0.0.4 and close the tabs.
+3. Now, click on the switch and go to the CLI. 
+4. press enter 
+5. it shows as switch>
+6. Write enable 
+7. Then type conf t 
+8. then type vlan 2
+9. name office
+10. exit 
+11. repeat the same with vlan 3, and name home
+12. exit
+13. interface fastEthernet 0/1
+14. switchport access vlan 2
+15. exit
+Repeat the same fro 0/2
+16. interface fastEthernet 0/3
+17. switchport access vlan 3
+18. exit 
+
+and now to verify it!!!
+go to pc 1
+go to desktop tab and command prompt 
+ping 10.0.0.2
+it will return the packets
+ping 10.0.0.3
+request will be timed out.
+
