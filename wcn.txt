@@ -54,40 +54,54 @@ User Form Validation:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User validation</title>
-</head>
-<script>
-    function valdateForm()
-    {
-        var username= document.getElementById("username").value;
-        var password= document.getElementById("password").value;
-        var email= document.getElementById("email").value;
-        // for checking if the username is blank or not: 
-        if(username=="")
-        {
-            alert('Username cannot be blank');
+    <title>User Validation</title>
+    <script>
+        function formvalidate(){
+        var username=document.getElementById("username").value;
+        var password=document.getElementById("password").value;
+        var email=document.getElementById("email").value;
+
+        // checking the username
+        if(username==""){
+            alert("Username can not be blank.");
             return false;
         }
-        // checking if the password is blank or not
         if(password==""){
-            alert('Password cannot be blank');
+            alert("Password can not be blank");
             return false;
         }
-        if(!email.includes("@")){
-            alert("Invalid Email id");
+        if(email==""){
+            alert("Password can not be blank");
             return false;
         }
-        alert("Form has been validated");
-        return true;
+        if(password.length<8){
+            alert("Password should be 8 characters or greater.");
+            return false;
+        }
+        if(!email.includes('@')){
+            alert('Invalid email id.');
+            return false;
+        }
+        else{
+            alert("Form has been validated.");
+            console.log("Form checked");
+            return true;
+        }
     }
-</script>
+    </script>
+</head>
 <body>
-    <form onsubmit="return valdateForm()">
-    Username: <input type="text" name="" id="username"><br>
-    Password:<input type="password" name="" id="password"><br>
-    Email: <input type="email" name="" id="email"><br>
-    <input type="submit" value="submit">
-    </form>
+    <title>Email Validation</title>
+    <label for="">Email Validation</label>
+    <form action="" name="myform" onsubmit=" return formvalidate()">
+        Username: <input type="text" id="username">
+        <br>
+        Password: <input type="password" id="password">
+        <br>
+        Email Id: <input type="email" id="email">
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>    
 </body>
 </html>
 
