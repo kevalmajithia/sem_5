@@ -1,4 +1,33 @@
-Background color change with Buttons:
+Setting Cookies:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function writeCookie() {
+            if (document.myForm.customer.value == "") {
+                alert("Enter some value.");
+                return;
+            }
+
+            var cookieValue = escape(document.myForm.customer.value) + ";";
+            document.cookie = "name=" + cookieValue;
+            document.write("Setting Cookie: name=" + cookieValue);
+        }
+    </script>
+</head>
+<body>
+    <form name="myForm" action="">
+        Enter name: <input type="text" name="customer">
+        <input type="button" value="Set Cookie" onclick="writeCookie();">
+    </form>
+</body>
+</html>
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Background colour change with Buttons:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,6 +220,73 @@ server.listen(port, () => {
 });
 
 // in the terminal run node server.js ( name of the file ) and then log in the link http://localhost:8080/
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Experiment-8
+// import React from 'react';
+
+// function App() {
+//   const handleClick = () => {
+//     alert('Hello!');
+//   };
+
+//   const buttonStyle = {
+//     padding: '15px 30px', // You can adjust the padding values to increase the button size
+//     fontSize: '16px', // You can adjust the font size
+//     display: 'inline-block', // Align the button horizontally
+//   };
+
+//   const containerStyle = {
+//     textAlign: 'center', // Center-align the button horizontally
+//   };
+
+//   return (
+//     <div style={containerStyle}>
+//       <button style={buttonStyle} onClick={handleClick}>
+//         Greet the User
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Experiment -9 
+
+import React, { useState } from 'react';
+
+function App() {
+  const [selectedColor, setSelectedColor] = useState('');
+
+  const handleColorClick = (color) => {
+    setSelectedColor(`You have selected ${color} color.`);
+  };
+
+  return (
+    <div className="App">
+      <h2>{selectedColor}</h2>
+      <button onClick={() => handleColorClick('Red')}>Red</button>
+      <button onClick={() => handleColorClick('Blue')}>Blue</button>
+      <button onClick={() => handleColorClick('Green')}>Green</button>
+      <button onClick={() => handleColorClick('Yellow')}>Yellow</button>
+    </div>
+  );
+}
+
+export default App;
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Steps to Create a react app:
+Steps to run react:
+For checking the versions of node and react
+npm -v
+node -v
+For creating the app:
+npx create-react-app my-app
+cd my-app
+npm start
+once done:
+npm run build
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
